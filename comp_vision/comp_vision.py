@@ -25,8 +25,6 @@ def sort_contours(cnts, method="left-to-right"):
 
 
 class CompVision:
-	
-
 	def __init__(self):
 		self.cap = cv2.VideoCapture(0)
 		self.thresh = None
@@ -64,7 +62,7 @@ class CompVision:
 		for cont in contours:
 			x, y, w, h = cv2.boundingRect(cont)
 			arc_length = cv2.arcLength(cont, True)
-			if arc_length > 100.0 and arc_length < 960:
+			if arc_length > 50.0 and arc_length < 960:
 				digit_contours.append(cont)
 				#cv2.rectangle(im, (x,y), (x+w, y+h), (255, 0, 0), 2)
 				#cv2.putText(im,str(count),(x,y), font, 1,(255,255,255),2)
@@ -95,10 +93,9 @@ class CompVision:
 			cont, label = cl
 			x, y, w, h = cv2.boundingRect(cont)
 			arc_length = cv2.arcLength(cont, True)
-			if arc_length > 30.0:
-				cv2.rectangle(im, (x,y), (x+w, y+h), (255, 0, 0), 2)
-				cv2.putText(im,str(label[0]),(x,y), self.font, 1,(255,255,255),2)
-				count += 1
+			cv2.rectangle(im, (x,y), (x+w, y+h), (255, 0, 0), 2)
+			cv2.putText(im,str(label[0]),(x,y), self.font, 1,(255,255,255),2)
+			count += 1
 
 		return im
 

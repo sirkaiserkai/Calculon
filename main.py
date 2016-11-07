@@ -57,7 +57,7 @@ model.compile(loss="categorical_crossentropy", optimizer=opt,
 # pre-existing model
 if args["load_model"] < 0:
 	print("[INFO] training...")
-	model.fit(trainData, trainLabels, batch_size=128, nb_epoch=10,
+	model.fit(trainData, trainLabels, batch_size=128, nb_epoch=20,
 		verbose=1)
 
 	# show the accuracy on the testing set
@@ -111,7 +111,6 @@ if args["camera_feed"] > 0:
 
 		im = c.label_contours_on_image(im, cont_with_labels)
 
-		
 
 		'''image = (digit_images[0] * 255).astype("uint8")
 		image = cv2.merge([image] * 3)
